@@ -1,0 +1,17 @@
+const API = 'http://localhost:3020/api'; const h = () => ({ 'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}` });
+export const login = (e, p) => fetch(`${API}/auth/login`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: e, password: p }) }).then(r => r.json());
+export const getStats = () => fetch(`${API}/stats`, { headers: h() }).then(r => r.json());
+export const getCandidates = () => fetch(`${API}/candidates`, { headers: h() }).then(r => r.json());
+export const createCandidate = d => fetch(`${API}/candidates`, { method: 'POST', headers: h(), body: JSON.stringify(d) }).then(r => r.json());
+export const updateCandidate = (id, d) => fetch(`${API}/candidates/${id}`, { method: 'PUT', headers: h(), body: JSON.stringify(d) }).then(r => r.json());
+export const deleteCandidate = id => fetch(`${API}/candidates/${id}`, { method: 'DELETE', headers: h() }).then(r => r.json());
+export const getQuestions = (diff, cat) => fetch(`${API}/questions${diff || cat ? `?${diff ? `difficulty=${diff}` : ''}${diff && cat ? '&' : ''}${cat ? `category=${cat}` : ''}` : ''}`, { headers: h() }).then(r => r.json());
+export const createQuestion = d => fetch(`${API}/questions`, { method: 'POST', headers: h(), body: JSON.stringify(d) }).then(r => r.json());
+export const updateQuestion = (id, d) => fetch(`${API}/questions/${id}`, { method: 'PUT', headers: h(), body: JSON.stringify(d) }).then(r => r.json());
+export const deleteQuestion = id => fetch(`${API}/questions/${id}`, { method: 'DELETE', headers: h() }).then(r => r.json());
+export const getInterviews = () => fetch(`${API}/interviews`, { headers: h() }).then(r => r.json());
+export const createInterview = d => fetch(`${API}/interviews`, { method: 'POST', headers: h(), body: JSON.stringify(d) }).then(r => r.json());
+export const deleteInterview = id => fetch(`${API}/interviews/${id}`, { method: 'DELETE', headers: h() }).then(r => r.json());
+export const aiEvaluateCode = d => fetch(`${API}/agents/evaluate-code`, { method: 'POST', headers: h(), body: JSON.stringify(d) }).then(r => r.json());
+export const aiGenerateQuestion = d => fetch(`${API}/agents/generate-question`, { method: 'POST', headers: h(), body: JSON.stringify(d) }).then(r => r.json());
+export const aiInterviewReport = d => fetch(`${API}/agents/interview-report`, { method: 'POST', headers: h(), body: JSON.stringify(d) }).then(r => r.json());

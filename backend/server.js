@@ -1,0 +1,12 @@
+const express = require('express'); const cors = require('cors');
+require('dotenv').config({ path: require('path').join(__dirname, '../.env') });
+const app = express(); app.use(cors()); app.use(express.json());
+const pool = require('./models/db');
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/candidates', require('./routes/candidates'));
+app.use('/api/questions', require('./routes/questions'));
+app.use('/api/interviews', require('./routes/interviews'));
+app.use('/api/agents', require('./routes/agents'));
+app.get('/api/stats', async (req, res) => { try { const [c,q,i,a] = await Promise.all([pool.query('SELECT COUNT(*) FROM candidates'), pool.query('SELECT COUNT(*) FROM questions'), pool.query('SELECT COUNT(*) FROM interviews'), pool.query("SELECT COUNT(*) FROM candidates WHERE avg_score >= 8")]); res.json({ candidates: +c.rows[0].count, questions: +q.rows[0].count, interviews: +i.rows[0].count, top_performers: +a.rows[0].count }); } catch(e) { res.status(500).json({ error: e.message }); } });
+const PORT = process.env.PORT || 3020;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
