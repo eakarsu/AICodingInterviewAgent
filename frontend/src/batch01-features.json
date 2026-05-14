@@ -1,0 +1,104 @@
+{
+  "project": "AICodingInterviewAgent",
+  "marker": "// === Batch 01 Gaps & Frontend Mounts ===",
+  "features": [
+    {
+      "slug": "ai-interview-agent-conducting-realistic-adaptive-t",
+      "component": "AiInterviewAgentConductingRealisticAdaptiveTPage",
+      "label": "AI interview agent conducting realistic, adaptive technical interviews with rubric scoring",
+      "endpoint": "/api/cf-ai-interview-agent-conducting-realistic-adaptive-t",
+      "kind": "cfs"
+    },
+    {
+      "slug": "rag-over-a-question-bank-that-adapts-difficulty-by",
+      "component": "RagOverAQuestionBankThatAdaptsDifficultyByPage",
+      "label": "RAG over a question bank that adapts difficulty by role and seniority",
+      "endpoint": "/api/cf-rag-over-a-question-bank-that-adapts-difficulty-by",
+      "kind": "cfs"
+    },
+    {
+      "slug": "real-time-fairness-bias-auditor-monitoring-evaluat",
+      "component": "RealTimeFairnessBiasAuditorMonitoringEvaluatPage",
+      "label": "Real-time fairness/bias auditor monitoring evaluation drift across reviewers",
+      "endpoint": "/api/cf-real-time-fairness-bias-auditor-monitoring-evaluat",
+      "kind": "cfs"
+    },
+    {
+      "slug": "white-label-deployment-for-staffing-agencies-and-h",
+      "component": "WhiteLabelDeploymentForStaffingAgenciesAndHPage",
+      "label": "White-label deployment for staffing agencies and hiring consultancies",
+      "endpoint": "/api/cf-white-label-deployment-for-staffing-agencies-and-h",
+      "kind": "cfs"
+    },
+    {
+      "slug": "0-mounted-chat-style-ai-endpoints-despite-the-prod",
+      "component": "Gap0MountedChatStyleAiEndpointsDespiteTheProdPage",
+      "label": "0 mounted /chat-style AI endpoints despite the product premise",
+      "endpoint": "/api/gap-0-mounted-chat-style-ai-endpoints-despite-the-prod",
+      "kind": "gap"
+    },
+    {
+      "slug": "no-ai-coding-problem-grader-with-rubric-scoring",
+      "component": "NoAiCodingProblemGraderWithRubricScoringPage",
+      "label": "No AI coding-problem grader with rubric scoring",
+      "endpoint": "/api/gap-no-ai-coding-problem-grader-with-rubric-scoring",
+      "kind": "gap"
+    },
+    {
+      "slug": "no-ai-behavioral-signal-analyzer-from-transcripts-",
+      "component": "NoAiBehavioralSignalAnalyzerFromTranscriptsPage",
+      "label": "No AI behavioral-signal analyzer from transcripts (replays stored but no AI)",
+      "endpoint": "/api/gap-no-ai-behavioral-signal-analyzer-from-transcripts-",
+      "kind": "gap"
+    },
+    {
+      "slug": "no-ai-follow-up-question-generator-during-intervie",
+      "component": "NoAiFollowUpQuestionGeneratorDuringInterviePage",
+      "label": "No AI follow-up-question generator during interview",
+      "endpoint": "/api/gap-no-ai-follow-up-question-generator-during-intervie",
+      "kind": "gap"
+    },
+    {
+      "slug": "no-ai-bias-audit-on-rankings",
+      "component": "NoAiBiasAuditOnRankingsPage",
+      "label": "No AI bias-audit on rankings",
+      "endpoint": "/api/gap-no-ai-bias-audit-on-rankings",
+      "kind": "gap"
+    },
+    {
+      "slug": "no-live-code-editor-sandbox-for-candidates",
+      "component": "NoLiveCodeEditorSandboxForCandidatesPage",
+      "label": "No live code editor / sandbox for candidates",
+      "endpoint": "/api/gap-no-live-code-editor-sandbox-for-candidates",
+      "kind": "gap"
+    },
+    {
+      "slug": "no-video-audio-capture-pipeline-only-replay-storag",
+      "component": "NoVideoAudioCapturePipelineOnlyReplayStoragPage",
+      "label": "No video/audio capture pipeline (only replay storage table)",
+      "endpoint": "/api/gap-no-video-audio-capture-pipeline-only-replay-storag",
+      "kind": "gap"
+    },
+    {
+      "slug": "notification-routes-exist-but-no-email-calendar-in",
+      "component": "NotificationRoutesExistButNoEmailCalendarInPage",
+      "label": "Notification routes exist but no email/calendar invite delivery",
+      "endpoint": "/api/gap-notification-routes-exist-but-no-email-calendar-in",
+      "kind": "gap"
+    },
+    {
+      "slug": "no-direct-ats-api-client-greenhouse-lever-workday",
+      "component": "NoDirectAtsApiClientGreenhouseLeverWorkdayPage",
+      "label": "No direct ATS API client (Greenhouse, Lever, Workday)",
+      "endpoint": "/api/gap-no-direct-ats-api-client-greenhouse-lever-workday",
+      "kind": "gap"
+    },
+    {
+      "slug": "no-anti-cheat-proctoring-layer",
+      "component": "NoAntiCheatProctoringLayerPage",
+      "label": "No anti-cheat / proctoring layer",
+      "endpoint": "/api/gap-no-anti-cheat-proctoring-layer",
+      "kind": "gap"
+    }
+  ]
+}
