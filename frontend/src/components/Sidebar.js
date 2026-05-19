@@ -13,6 +13,7 @@ const items = [
   { key: 'notifications', icon: '🔔', label: 'Notifications' },
   { key: 'reports', icon: '📊', label: 'Reports' },
   { key: 'webhooks', icon: '🔗', label: 'Webhooks' },
+  { key: 'custom-views', icon: '🧩', label: 'Interview Views' },
 ];
 
 export default function Sidebar({ active, onNavigate }) {

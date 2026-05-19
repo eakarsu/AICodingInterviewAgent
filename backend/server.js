@@ -84,6 +84,10 @@ app.use('/api/question-bank-rag', require('./routes/questionBankRag')); // apply
 app.use('/api/bias-auditor', require('./routes/biasAuditor')); // apply pass 6 — audit custom suggestion
 
 app.use('/api/staffing-white-label', require('./routes/staffingWhiteLabel')); // apply pass 6 — audit custom suggestion
+
+// Custom Views (4 endpoints: 2 viz + 2 non-viz)
+app.use('/api/custom-views', require('./routes/customViews'));
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 module.exports = app;

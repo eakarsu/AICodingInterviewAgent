@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';
@@ -14,15 +14,31 @@ import AnalyticsPage from './pages/AnalyticsPage';
 import NotificationsPage from './pages/NotificationsPage';
 import ReportsPage from './pages/ReportsPage';
 import WebhooksPage from './pages/WebhooksPage';
+import CustomViewsPage from './pages/CustomViewsPage';
 
-function App() {
-  const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('token'));
+function Shell() {
   const [page, setPage] = useState('dashboard');
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  if (!loggedIn) return <LoginPage onLogin={() => setLoggedIn(true)} />;
+  // Sync URL <-> page state for the custom-views route
+  useEffect(() => {
+    if (location.pathname.startsWith('/custom-views') && page !== 'custom-views') {
+      setPage('custom-views');
+    }
+  }, [location.pathname, page]);
+
+  const handleNavigate = (key) => {
+    setPage(key);
+    if (key === 'custom-views') {
+      navigate('/custom-views');
+    } else if (location.pathname !== '/') {
+      navigate('/');
+    }
+  };
 
   const pages = {
-    dashboard: <DashboardPage onNavigate={setPage} />,
+    dashboard: <DashboardPage onNavigate={handleNavigate} />,
     candidates: <CandidatesPage />,
     questions: <QuestionsPage />,
     interviews: <InterviewsPage />,
@@ -34,14 +50,28 @@ function App() {
     notifications: <NotificationsPage />,
     reports: <ReportsPage />,
     webhooks: <WebhooksPage />,
+    'custom-views': <CustomViewsPage />,
   };
 
   return (
-    <BrowserRouter>
-      <div style={{ display: 'flex', minHeight: '100vh', background: '#1a1a2e' }}>
-        <Sidebar active={page} onNavigate={setPage} />
-        <div style={{ marginLeft: 240, padding: 30, flex: 1 }}>{pages[page] || pages.dashboard}</div>
+    <div style={{ display: 'flex', minHeight: '100vh', background: '#1a1a2e' }}>
+      <Sidebar active={page} onNavigate={handleNavigate} />
+      <div style={{ marginLeft: 240, padding: 30, flex: 1 }}>
+        <Routes>
+          <Route path="/custom-views" element={<CustomViewsPage />} />
+          <Route path="*" element={pages[page] || pages.dashboard} />
+        </Routes>
       </div>
+    </div>
+  );
+}
+
+function App() {
+  const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('token'));
+  if (!loggedIn) return <LoginPage onLogin={() => setLoggedIn(true)} />;
+  return (
+    <BrowserRouter>
+      <Shell />
     </BrowserRouter>
   );
 }
