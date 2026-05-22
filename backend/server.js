@@ -87,6 +87,7 @@ app.use('/api/staffing-white-label', require('./routes/staffingWhiteLabel')); //
 
 // Custom Views (4 endpoints: 2 viz + 2 non-viz)
 app.use('/api/custom-views', require('./routes/customViews'));
+app.use('/api/rubric-drift', require('./routes/rubricDrift'));
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 

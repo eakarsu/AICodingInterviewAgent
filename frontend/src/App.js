@@ -16,6 +16,12 @@ import ReportsPage from './pages/ReportsPage';
 import WebhooksPage from './pages/WebhooksPage';
 import CustomViewsPage from './pages/CustomViewsPage';
 
+import CodexCustomVizFeature from './pages/CodexCustomVizFeature';
+import CodexOperationsFeature from './pages/CodexOperationsFeature';
+
+import TimelineView from './pages/TimelineView';
+import RubricDriftPage from './pages/RubricDriftPage';
+
 function Shell() {
   const [page, setPage] = useState('dashboard');
   const navigate = useNavigate();
@@ -51,6 +57,7 @@ function Shell() {
     reports: <ReportsPage />,
     webhooks: <WebhooksPage />,
     'custom-views': <CustomViewsPage />,
+    'rubric-drift': <RubricDriftPage />,
   };
 
   return (
@@ -58,7 +65,12 @@ function Shell() {
       <Sidebar active={page} onNavigate={handleNavigate} />
       <div style={{ marginLeft: 240, padding: 30, flex: 1 }}>
         <Routes>
+        <Route path="/insights/timeline" element={<TimelineView />} />
+        <Route path="/codex/custom-viz" element={<CodexCustomVizFeature />} />
+        <Route path="/codex/operations" element={<CodexOperationsFeature />} />
+
           <Route path="/custom-views" element={<CustomViewsPage />} />
+          <Route path="/rubric-drift" element={<RubricDriftPage />} />
           <Route path="*" element={pages[page] || pages.dashboard} />
         </Routes>
       </div>

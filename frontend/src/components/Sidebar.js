@@ -14,6 +14,7 @@ const items = [
   { key: 'reports', icon: '📊', label: 'Reports' },
   { key: 'webhooks', icon: '🔗', label: 'Webhooks' },
   { key: 'custom-views', icon: '🧩', label: 'Interview Views' },
+  { key: 'rubric-drift', icon: '📏', label: 'Rubric Drift' },
 ];
 
 export default function Sidebar({ active, onNavigate }) {
