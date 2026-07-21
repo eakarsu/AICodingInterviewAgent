@@ -3,7 +3,8 @@ require('dotenv').config({ path: require('path').join(__dirname, '../../.env') }
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 async function seed() {
   const bcrypt = require('bcryptjs');
-  const hash = await bcrypt.hash('admin123', 10);
+  if (!process.env.DEMO_ADMIN_PASSWORD || process.env.DEMO_ADMIN_PASSWORD.length < 12) throw new Error('DEMO_ADMIN_PASSWORD (12+ characters) is required');
+  const hash = await bcrypt.hash(process.env.DEMO_ADMIN_PASSWORD, 10);
   await pool.query(`INSERT INTO users (email, password, name) VALUES ($1, $2, $3) ON CONFLICT (email) DO NOTHING`, ['admin@example.com', hash, 'Admin']);
 
   const candidates = [
