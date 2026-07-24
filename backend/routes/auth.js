@@ -1,4 +1,4 @@
-const express = require('express'), bcrypt = require('bcryptjs'), jwt = require('jsonwebtoken'), pool = require('../models/db'), router = express.Router();
+const express = require('express'), bcrypt = require('bcryptjs'), jwt = require('jsonwebtoken'), pool = require('../models/db'), auth = require('../middleware/auth'), router = express.Router();
 router.post('/login', async (req, res) => {
   try { const { email, password } = req.body; const r = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
     if (!r.rows.length || !await bcrypt.compare(password, r.rows[0].password)) return res.status(401).json({ error: 'Invalid credentials' });
@@ -13,4 +13,5 @@ router.post('/register', async (req, res) => {
     res.status(201).json({ token, user: r.rows[0] });
   } catch (err) { res.status(500).json({ error: err.message }); }
 });
+router.get('/me', auth, (req, res) => res.json({ user: req.user }));
 module.exports = router;

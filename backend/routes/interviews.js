@@ -7,7 +7,7 @@ const axios = require('axios');
 
 router.use(auth);
 
-const OPENROUTER_MODEL = 'anthropic/claude-3-5-sonnet-20241022';
+const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || 'openai/gpt-4o-mini';
 const SYSTEM_PROMPT = 'You are an expert software engineering interviewer. Evaluate code for correctness, efficiency, quality, and problem-solving approach. Provide constructive, specific feedback.';
 
 // Allowed languages for validation

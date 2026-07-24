@@ -5,7 +5,7 @@ root="$(cd "$(dirname "$0")" && pwd)"
 [ -d "$root/backend/node_modules" ] && [ -d "$root/frontend/node_modules" ] || { echo "Dependencies missing; run scripts/bootstrap.sh" >&2; exit 1; }
 set -a; . "$root/.env"; set +a
 (cd "$root/backend" && npm start) & backend_pid=$!
-(cd "$root/frontend" && BROWSER=none PORT="${FRONTEND_PORT:-3021}" npm start) & frontend_pid=$!
+(cd "$root/frontend" && BROWSER=none PORT="${FRONTEND_PORT:-3021}" REACT_APP_API_URL="http://127.0.0.1:${BACKEND_PORT}/api" npm start) & frontend_pid=$!
 cleanup(){ kill "$backend_pid" "$frontend_pid" 2>/dev/null || true; }
 trap cleanup EXIT INT TERM
 wait "$backend_pid" "$frontend_pid"
