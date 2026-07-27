@@ -21,6 +21,7 @@ import CodexOperationsFeature from './pages/CodexOperationsFeature';
 
 import TimelineView from './pages/TimelineView';
 import RubricDriftPage from './pages/RubricDriftPage';
+import EvidenceAssessmentCenter from './pages/EvidenceAssessmentCenter';
 
 function Shell() {
   const [page, setPage] = useState('dashboard');
@@ -58,6 +59,7 @@ function Shell() {
     webhooks: <WebhooksPage />,
     'custom-views': <CustomViewsPage />,
     'rubric-drift': <RubricDriftPage />,
+    'evidence-assessments': <EvidenceAssessmentCenter />,
   };
 
   return (

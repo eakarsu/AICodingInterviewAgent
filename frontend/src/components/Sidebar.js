@@ -15,6 +15,7 @@ const items = [
   { key: 'webhooks', icon: '🔗', label: 'Webhooks' },
   { key: 'custom-views', icon: '🧩', label: 'Interview Views' },
   { key: 'rubric-drift', icon: '📏', label: 'Rubric Drift' },
+  { key: 'evidence-assessments', icon: '🧠', label: 'Oral & Durable Skills' },
 ];
 
 export default function Sidebar({ active, onNavigate }) {
