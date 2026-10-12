@@ -1,7 +1,12 @@
+
+import FullAIExamples, { useFullAIExamples } from "../components/FullAIExamples.jsx";
+import FormattedAIReport from "../components/FormattedAIReport";
 import React, { useEffect, useState } from 'react';
 import { getCandidates, getSkillHeatmap, analyzeSkills } from '../services/api';
 
 export default function SkillGapPage() {
+  const fullAIExamples = useFullAIExamples();
+
   const [candidates, setCandidates] = useState([]);
   const [selected, setSelected] = useState(null);
   const [heatmap, setHeatmap] = useState(null);
@@ -38,7 +43,7 @@ export default function SkillGapPage() {
   };
 
   return (
-    <div>
+    <div data-full-ai-workspace="SkillGapPage"><FullAIExamples controller={fullAIExamples} disabled={Boolean(loading)} />
       <h1 style={{ color: '#fff', marginBottom: 20 }}>Skill Gap Analysis</h1>
 
       <div style={{ background: '#16213e', padding: 20, borderRadius: 12, marginBottom: 20 }}>
@@ -46,7 +51,7 @@ export default function SkillGapPage() {
         <select
           value={selected || ''}
           onChange={(e) => handleSelect(parseInt(e.target.value))}
-          style={{ width: '100%', padding: 10, marginTop: 4, background: '#1a1a2e', border: '1px solid #0f3460', borderRadius: 6, color: '#fff' }}
+          style={{ width: '100%', padding: 10, marginTop: 4, background: '#1a1a2e', border: '1px solid #0f3460', borderRadius: 6, color: '#fff' }} data-full-ai-field={fullAIExamples.bind({ current: selected || '', change: (e) => handleSelect(parseInt(e.target.value)), label: "selected", manual: false, json: false, sample: null }, "p1-1386", undefined)}
         >
           <option value="">-- Choose --</option>
           {candidates.map(c => <option key={c.id} value={c.id}>{c.name} ({c.experience_level})</option>)}
@@ -78,7 +83,7 @@ export default function SkillGapPage() {
       {analysis && (
         <div style={{ background: '#16213e', padding: 20, borderRadius: 12 }}>
           <h3 style={{ color: '#e94560' }}>AI Analysis</h3>
-          <pre style={{ color: '#e0e0e0', fontFamily: 'monospace', fontSize: 12, whiteSpace: 'pre-wrap' }}>{JSON.stringify(analysis.analysis || analysis, null, 2)}</pre>
+          <FormattedAIReport response={analysis.analysis || analysis} />
         </div>
       )}
     </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { computeRankings, getRankings, recommendRoles } from '../services/api';
+import AIReport from '../components/AIReport';
 
 export default function RankingPage() {
   const [rankings, setRankings] = useState([]);
@@ -81,7 +82,7 @@ export default function RankingPage() {
                 {recs[r.candidate_id] && (
                   <tr>
                     <td colSpan="6" style={{ padding: 8, background: '#1a1a2e' }}>
-                      <pre style={{ fontSize: 12, fontFamily: 'monospace', whiteSpace: 'pre-wrap', margin: 0 }}>{JSON.stringify(recs[r.candidate_id], null, 2)}</pre>
+                      <AIReport response={recs[r.candidate_id]} title={`Role recommendations for ${r.candidate_name}`} />
                     </td>
                   </tr>
                 )}

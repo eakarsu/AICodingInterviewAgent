@@ -1,3 +1,4 @@
+import AIReportLibrary from "./components/AIReportLibrary";
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
@@ -63,7 +64,7 @@ function Shell() {
   };
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', background: '#1a1a2e' }}>
+    <><AIReportLibrary floating /><div style={{ display: 'flex', minHeight: '100vh', background: '#1a1a2e' }}>
       <Sidebar active={page} onNavigate={handleNavigate} />
       <div style={{ marginLeft: 240, padding: 30, flex: 1 }}>
         <Routes>
@@ -76,7 +77,7 @@ function Shell() {
           <Route path="*" element={pages[page] || pages.dashboard} />
         </Routes>
       </div>
-    </div>
+    </div></>
   );
 }
 
